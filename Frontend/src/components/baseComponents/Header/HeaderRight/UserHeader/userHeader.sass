@@ -1,0 +1,60 @@
+.modal-user
+    background: rgba(0, 0, 0, 0.82)
+    position: fixed
+    top:0
+    bottom: 0
+    left: 0
+    right: 0
+    display: flex
+    min-height: 100vh
+    justify-content: center
+    align-items: center
+    z-index: 1
+    text-align: center
+    .modal-user-inner
+        background-image: url('https://img.freepik.com/foto-gratis/fondo-degradado-futurista-lineas-particulas-blancas_53876-102621.jpg?w=740&t=st=1692743837~exp=1692744437~hmac=8dbd89908154e29e5593386a661ada8b406927ca879320a211a933c93aa76e65')
+        padding: 30px
+        border-radius: 10px
+        width: 550px
+        display: flex
+        flex-direction: row
+        align-items: center
+        gap: 15px
+        font-weight: bold
+        .container-user-create-account
+            display: flex
+        p:first-child
+            color: rgb(116, 167, 214)
+            text-transform: uppercase
+            text-decoration: underline rgb(116, 167, 214)
+        input
+            border-radius: 10px
+            background-color: rgb(237, 246, 250)
+            margin:10px
+            width: 420px
+        input::placeholder
+            color: rgb(125, 166, 204)  
+            font-weight: 400
+        button
+            justify-content: center
+            margin: 10px
+            width: 120px
+            border-radius: 10px
+            color: rgb(71, 49, 167)
+            font-size: 15px
+            padding: 3px
+            border: 1px solid rgb(150, 150, 150)
+        button:hover
+            background: rgb(125, 166, 204)  
+        .still-not-created, .already-created-account
+            color: rgb(125, 166, 204)     
+            padding-bottom: 10px
+            cursor: pointer
+.span-Login, .span-register
+    cursor: pointer
+    font-weight: bold
+.span-Login:hover
+    color: rgb(65, 132, 233)
+.span-register:hover
+    color: rgb(65, 132, 233)
+   

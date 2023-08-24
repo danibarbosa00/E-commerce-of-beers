@@ -1,0 +1,54 @@
+.header
+    background: #f4f4f4
+    display: flex
+    flex-wrap: wrap
+    padding: 10px 50px
+    border-bottom: 1px solid #777676
+    .header-left,.header-right,.header,.header-center
+        align-items: center
+    .header-left, .header-right
+        width: 30%
+    .header-center
+        display: flex
+        width: 40%
+        justify-content: center
+    .header-right
+        display: flex   
+        justify-content: flex-end
+        &>div
+            margin-left: 20px
+        .user-header span
+            margin-right: 10px
+            padding: 4px
+        .span-create-account
+            cursor: pointer
+        .span-login
+            cursor: pointer
+        .span-create-account:hover
+            background: rgb(155, 153, 153)
+            border-radius: 10px
+        .span-login:hover
+            background: rgb(155, 153, 153)
+            border-radius: 10px
+        .product-search,.cart
+            background: #fff
+            padding: 10px
+            border-radius: 10px
+        .cart svg
+            margin-right: 10px
+        .product-search
+            position: relative
+            svg
+                cursor: pointer
+        .product-search-modal
+            position: absolute
+            top: 161%
+            right: -425%
+            background:#fff
+            width: 300px
+            padding: 10px
+            border-radius: 10px 0px 0px 10px 
+            border: 2px solid #cacaca
+        .user-create-account   
+    .logo
+        height: 70px
