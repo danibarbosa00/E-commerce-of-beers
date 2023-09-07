@@ -9,11 +9,38 @@ import Footer from './components/baseComponents/Footer/footer';
 import CategoryPage from './app/CategoryPage';
 import ProductPage from './app/ProductPage';
 import { CategoriesListing } from './components/specificComponents/CategoriesListing';
+import { changeCart } from './utils/reducers/reduxDispatch';
+import { getDataApiJSON } from './utils/globals/petitions';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const firstLoading = useCallback(async () => {
     setLoaded(true);
+    //usuario
+    const userId= localStorage.getItem('id')
+    if (userId) {
+      
+    }
+    //SHOPPINGCART 
+    const shoppingCartId=localStorage.getItem('shoppingCartId')
+    if(shoppingCartId){
+      const shoppingCart = await getDataApiJSON('/api/shoppingCart/getShoppingCartInstance',{id:shoppingCartId})
+      let price=0
+      if(shoppingCart && shoppingCart.ShoppingCartProducts ){
+        for (const product of shoppingCart.ShoppingCartProducts) {
+          price += parseFloat(product.price)
+        }
+      }
+       await changeCart({...shoppingCart,price})
+    }
+    else
+      {const shoppingCart = await getDataApiJSON('/api/shoppingCart/createShoppingCart',{})
+      if(shoppingCart){
+        localStorage.setItem('shoppingCartId',shoppingCart.id)
+         await changeCart({...shoppingCart,price:0})
+      }
+    }
+    
   }, []);
 
   useEffect(() => {

@@ -10,10 +10,13 @@ const UserHeader: React.FC<UserHeaderProps> = () => {
 
   return (
     <div className='user-header'>
-      <span className='span-Login' onClick={() => setOpenModal('login')}>Login</span>
-      <span>|</span>
-      <span className='span-register' onClick={() => setOpenModal('register')}>Create account</span>
-      {openModal? <Modal type={openModal} setOpenModal={setOpenModal}/>:null}
+        <>
+          <span className='span-Login' onClick={() => setOpenModal('login')}>Login</span>
+          <span>|</span>
+          <span className='span-register' onClick={() => setOpenModal('register')}>Create account</span>
+          {openModal ? <Modal type={openModal} setOpenModal={setOpenModal} /> : null}
+        </>
+
     </div>
   );
 };

@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { SingleIndividual } from './types';
 import { getDataApiJSON } from '../../../utils/globals/petitions';
 import './products.sass'
+import { addToCart } from '../../../utils/reducers/reduxDispatch';
 
 interface ProductProps extends ProductLogicProps {}
 
@@ -42,6 +43,7 @@ const useProductLogic = ({}: ProductLogicProps) => {
   price,
   description,
   url,
+  id
  }) => {
     return ( <div className='individual-product-category'>
       <div className='left-individual-product-category'>
@@ -51,7 +53,7 @@ const useProductLogic = ({}: ProductLogicProps) => {
         <h2>{name}</h2>
         <p>{description}</p>
         <p>Price: {price} $</p>
-        <button>Añadir al carrito</button>
+        <button onClick={()=>{addToCart(id, parseFloat(String(price)))}}>Añadir al carrito</button>
       </div>
     </div>)
 }

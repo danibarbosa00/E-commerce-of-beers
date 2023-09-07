@@ -4,7 +4,7 @@ import ProductsListing from '../../components/specificComponents/ProductsListing
 import RareProductsListing from './RareProductListing';
 import './homePage.sass'
 
-interface HomePageProps extends HomePageLogicProps {}
+interface HomePageProps  {}
 
 const HomePage: React.FC<HomePageProps> = ({}) => {
   return (
@@ -17,6 +17,7 @@ const HomePage: React.FC<HomePageProps> = ({}) => {
   );
 };
 
-interface HomePageLogicProps {}
+
+
 
 export default HomePage;

@@ -36,19 +36,9 @@ const LoginUser= useCallback(async (e:any) => {
    const userByEmail = await getDataApiJSON('/api/user/getUserByEmail', { email });
     if(userByEmail.password===password){
       const token = userByEmail.token;
-      const email = userByEmail.email;
-      const  addres_1= userByEmail.address_1;
-      const  addres_2= userByEmail.address_2;
-      const id = userByEmail.id;
-      const postalCode = userByEmail.postal_code;
-      const phone = userByEmail.phone;
-      localStorage.setItem('postalCode', JSON.stringify(postalCode));
-      localStorage.setItem('id', JSON.stringify(id));
-      localStorage.setItem('phone', JSON.stringify(phone));
-      localStorage.setItem('email', JSON.stringify(email));
+      const id = userByEmail.id; 
+      localStorage.setItem('id', JSON.stringify(id));     
       localStorage.setItem('token', JSON.stringify(token));
-      localStorage.setItem('addres_1', JSON.stringify(addres_1));
-      localStorage.setItem('addres_2', JSON.stringify(addres_2));
       setOpenModal(null)
     }
     else setPasswordError('Wrong email or password')
