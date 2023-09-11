@@ -37,9 +37,9 @@ const ProductsList = ({ title, getData }: ProductsListProps) => {
   return (
     <div className='container-someNew-products'>
         <h2 className='products-listing-title'>{title}</h2>
-        <div className='products-listing'>{renderThis}</div>
+        <div className='products-listing'>  {title==='Product of the month'&&<img src='/icono.primero.jpg' alt='first' className='icon-first'></img>}{renderThis}</div>
     </div>
   );
-};
+}
 
 export default ProductsList;
