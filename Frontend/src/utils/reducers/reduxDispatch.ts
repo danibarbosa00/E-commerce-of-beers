@@ -1,7 +1,7 @@
 import store from '.'
 import { getDataApiJSON } from '../globals/petitions'
 import {Example, ExampleAction, ExampleActionSumNumber} from './example'
-import { ChangeShoppingCartAction, ShoppingAddCartAction, ShoppingCart } from './shoppingCart'
+import { ChangeShoppingCartAction, DeleteShoppingCartProductAction, ShoppingAddCartAction, ShoppingCart } from './shoppingCart'
 import { LoadUserAction  } from './user'
 
 //EXAMPLE
@@ -26,10 +26,12 @@ export const addToCart = async (ProductId: number,price:number) => {
         type: 'SHOPPINGCARTS_ADDCART',
         payload: {ProductId,price}
     }
+    
  const shoppingCart = store.getState().shoppingCart;
     if (shoppingCart) {
-        await getDataApiJSON('(api/shoppingCartProduct/createShoppingCartProduct', {
+        await getDataApiJSON('/api/shoppingCartProduct/createShoppingCartProduct', {
             ShoppingCartId: shoppingCart.id,
+            ProductId,
             price,
             quantity: 1
         });
@@ -44,18 +46,28 @@ export const changeCart = async (params: ShoppingCart) => {
     await store.dispatch(mydispatch);
 }
 
+export const deleteToCartProduct = async (ProductId: number) => {
+    const mydispatch:DeleteShoppingCartProductAction={
+        type: 'SHOPPINGCART_DELETECARTPRODUCT',
+        payload: {ProductId}
+    }
+ const shoppingCart = store.getState().shoppingCart;
+    if (shoppingCart) {
+        await getDataApiJSON('/api/shoppingCartProduct/deleteShoppingCartProduct', {
+            ShoppingCartId: shoppingCart.id,
+            ProductId,
+        });
+    await store.dispatch(mydispatch)
+}}
+
 //USER
 
-export const loadUser = (id: number) => async (dispatch: any) => {
-  try {
-    // Aquí deberías realizar la llamada a la API para obtener los datos del usuario por su id
-    const user = await getDataApiJSON("/api/user/getUserInstance",id);
+export const loadUser =  async (id:number,token:string) => {
+
+    const user = await getDataApiJSON('/api/user/getUserInstance',{id})
     const mydispatch: LoadUserAction = {
       type: 'LOAD_USER',
       payload: user,
     };
-    dispatch(mydispatch);
-  } catch (error) {
-    // Manejo de errores
-  }
-};
+    await store.dispatch(mydispatch);
+    }

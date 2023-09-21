@@ -12,14 +12,14 @@ const Footer: React.FC<FooterProps> = ({}) => {
           <a>Contact</a>
           <a>Privacy Policy</a>
         </nav>
-      <p>©Copyright DaniBarbosa</p>
+      <p>©Copyright DaniBarbosa2023</p>
     </div>
     <div>
       <nav>
-        <Link to={'https://instagram.com'}><img src='instagram.png' alt='instagram' className='footer-icon'/></Link>
-        <Link to={'https://facebook.com'}><img src='facebook.png' alt='facebook' className='footer-icon'/></Link>
-        <Link to={'https://Linkedin.com'}><img src='linkedin.png' alt='linkedin' className='footer-icon'/></Link>
-        <Link to={'https://twitter.com'}><img src='twitter.png' alt='twitter' className='footer-icon'/></Link>
+        <Link to={'https://instagram.com'}><img src='/instagram.png' alt='instagram' className='footer-icon'/></Link>
+        <Link to={'https://facebook.com'}><img src='/facebook.png' alt='facebook' className='footer-icon'/></Link>
+        <Link to={'https://Linkedin.com'}><img src='/linkedin.png' alt='linkedin' className='footer-icon'/></Link>
+        <Link to={'https://twitter.com'}><img src='/twitter.png' alt='twitter' className='footer-icon'/></Link>
       </nav>
     </div>
      <div>

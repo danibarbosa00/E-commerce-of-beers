@@ -12,7 +12,7 @@ export interface AllReduxPayloads {
 const rootReducer = combineReducers({
     example,
     shoppingCart,
-    // user
+    user
 
 })
 

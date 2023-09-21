@@ -3,23 +3,27 @@ import './app.sass';
 import { Suspense, useCallback, useEffect, useState } from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import HomePage from './app/HomePage';
-import Cart from './app/CartPage';
 import Header from './components/baseComponents/Header/index';
 import Footer from './components/baseComponents/Footer/footer';
 import CategoryPage from './app/CategoryPage';
 import ProductPage from './app/ProductPage';
 import { CategoriesListing } from './components/specificComponents/CategoriesListing';
-import { changeCart } from './utils/reducers/reduxDispatch';
+import { changeCart, loadUser } from './utils/reducers/reduxDispatch';
 import { getDataApiJSON } from './utils/globals/petitions';
+import ButtonUp from './components/baseComponents/ButtonUp/ButtonUp';
+import NotFound from './app/NotFound';
+import { CartPage } from './app/CartPage/index';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const firstLoading = useCallback(async () => {
     setLoaded(true);
     //usuario
-    const userId= localStorage.getItem('id')
-    if (userId) {
-      
+    const id = localStorage.getItem('id');
+    const token = localStorage.getItem('token');
+    if (id && token) {
+      const userId = parseInt(id)
+      loadUser(userId, token)
     }
     //SHOPPINGCART 
     const shoppingCartId=localStorage.getItem('shoppingCartId')
@@ -63,17 +67,53 @@ const LoadingDiv: React.FC = () => {
 const AppLoaded: React.FC = () => {
   return (
     <div className='h-screen w-screen'>
-    
       <Router>
-        <Header />
-        <CategoriesListing />
         <Routes>
-          <Route path='/' Component={HomePage} />
-          <Route path='/category/:id' Component={CategoryPage} />
-          <Route path='/cart' Component={Cart} />
-          <Route path='/product/:id' Component={ProductPage} />
+          <Route path='/'element={
+              <>
+                <Header />
+                <CategoriesListing />
+                <ButtonUp />
+                <HomePage />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path='/category/:id' element={
+              <>
+                <Header />
+                <CategoriesListing />
+                <ButtonUp />
+                <CategoryPage />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path='/cart/:id' element={
+              <>
+                <Header />
+                <CategoriesListing />
+                <ButtonUp />
+                <CartPage />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path='/product/:id'element={
+              <>
+                <Header />
+                <CategoriesListing />
+                <ButtonUp />
+                <ProductPage />
+                <Footer />
+              </>}
+          />
+          <Route
+            path='*'element={<NotFound />}/>
         </Routes>
-         <Footer />
       </Router>
     </div>
   );

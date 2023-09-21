@@ -53,7 +53,7 @@ const useProductLogic = ({}: ProductLogicProps) => {
         <h2>{name}</h2>
         <p>{description}</p>
         <p>Price: {price} $</p>
-        <button onClick={()=>{addToCart(id, parseFloat(String(price)))}}>Añadir al carrito</button>
+        <button onClick={()=>{addToCart(id, parseFloat(String(price)))}}>Add to cart</button>
       </div>
     </div>)
 }

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'; // Asegúrate de importar React
+import { useState, useEffect } from 'react';
 import { IndividualProduct } from '../../../components/specificComponents/IndividualProduct';
 import { Product } from './types';
 import './someNewProducts.sass'

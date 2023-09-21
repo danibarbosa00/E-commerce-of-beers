@@ -2,13 +2,17 @@ import { connect, ConnectedProps } from "react-redux";
 
 interface UserProps extends ReduxProps {}
 
-const User: React.FC<UserProps> = ({ user }) => {
-  return <div>{user ? user.name : "No user"}</div>; 
-};
+ const User: React.FC<UserProps> = ({ user }) => {
+  if (!user) {
+    return null
+  }
+ return <div>{user.email}</div>
+}
 
 const mapUserStateToProps = (state: any) => ({
   user: state.user,
 });
+
 
 const connector = connect(mapUserStateToProps);
 

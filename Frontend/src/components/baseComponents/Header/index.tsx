@@ -16,7 +16,7 @@ const Header: React.FC<HeaderProps> = ({}) => {
 
 interface HeaderLeftProps {}
 const HeaderLeft: React.FC<HeaderLeftProps> = ({}) => {
-  return <div className='header-left'></div>;
+  return <div className='header-left'><Link to='/'><h1 className='title-header'>Beer Zone</h1></Link></div>;
 };
 
 interface HeaderCenterProps {}

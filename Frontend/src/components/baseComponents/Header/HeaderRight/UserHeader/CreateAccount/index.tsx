@@ -6,7 +6,7 @@ interface FormData {
   email: string
   address_1: string
   address_2: string
-  postalCode: string
+  postal_code: string
   phone: string
   password: string
   confirmPassword: string
@@ -21,7 +21,7 @@ const useUserCreateAccountLogic = () => {
     email: '',
     address_1: '',
     address_2: '',
-    postalCode: '',
+    postal_code: '',
     phone: '',
     password: '',
     confirmPassword: '',
@@ -34,7 +34,7 @@ const useUserCreateAccountLogic = () => {
     })
   }, [])
 const createUser = useCallback(async (e:any) => {
-  e.preventDefault()  
+  e.preventDefault() 
   if(formData.email){
     const userByEmail = await getDataApiJSON('/api/user/getUserByEmail', { email: formData.email });
      if(!userByEmail.id){
@@ -87,7 +87,7 @@ const RegisterModal: React.FC<UserHeaderModalProps> = ({setOpenModal}) => {
 
         <input id='address_2-user' placeholder='Adicional address' name='address_2-user'value={formData.address_2} onChange={(e) => changeValue(e.target.value,'address_2')}></input>
         
-        <input id='postalCode-user' placeholder='Postal Code' name='postalCode-user' value={formData.postalCode} onChange={(e) => changeValue(e.target.value,'postalCode')}></input>
+        <input id='postalCode-user' placeholder='Postal Code' name='postalCode-user' value={formData.postal_code} onChange={(e) => changeValue(e.target.value,'postal_code')}></input>
 
         <input id='phone-user' placeholder='Phone' name='phone-user' value={formData.phone} onChange={(e) => changeValue(e.target.value,'phone')}></input>
 
